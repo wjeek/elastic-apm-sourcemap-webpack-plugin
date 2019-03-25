@@ -1,0 +1,70 @@
+{
+  "name": "elastic-apm-sourcemap-webpack-plugin",
+  "version": "0.1.0",
+  "description": "upload souremap to apm compatible with webpack3",
+  "main": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Wjeek (https://github.com/wjeek)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wjeek/elastic-apm-sourcemap-webpack-plugin.git"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "keywords": [
+    "apm",
+    "sourcemap",
+    "webpack"
+  ],
+  "scripts": {
+    "format": "eslint --fix 'src/**/*.js'",
+    "prebuild": "rimraf dist",
+    "build": "babel src --out-dir dist --source-maps inline"
+  },
+  "bugs": {
+    "url": "https://github.com/wjeek/elastic-apm-sourcemap-webpack-plugin/issues"
+  },
+  "dependencies": {
+    "form-data": "^2.3.3",
+    "node-fetch": "^2.3.0",
+    "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.2.0",
+    "codecov": "^3.2.0",
+    "eslint": "^5.14.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "husky": "^1.0.1",
+    "lint-staged": "^8.0.0",
+    "prettier": "^1.14.3",
+    "rimraf": "^2.6.2",
+    "webpack": "^3.11.0",
+    "webpack-log": "^2.0.0"
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test:prod && npm run build"
+    }
+  }
+}
